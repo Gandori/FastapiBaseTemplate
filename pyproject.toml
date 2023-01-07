@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = 'FastapiBaseTemplate'
+version = '1.0.0'
+description = 'Template for Fastapi application'
+authors = [{name = 'Marcel Stiebing'}]
+requires-python = '>=3.8'
+dependencies = [
+    'uvicorn >= 0.20.0',
+    'fastapi >= 0.88.0'
+]
+
+[project.urls]
+'repository' = 'https://github.com/Gandori/FastapiBaseTemplate'
