@@ -1,15 +1,18 @@
 import uvicorn
 from api.api import api
 
-class Base:
-    def __init__(self, app, host, port, reload) -> None:
+class Server:
+    def __init__(self, app, host, port):
         self.app = app
         self.host = host
         self.port = port
-        self.reload = reload
 
     def run(self):
-        uvicorn.run(app=self.app, host=self.host, port=self.port, reload=self.reload)
+        uvicorn.run(
+            app=self.app,
+            host=self.host,
+            port=self.port
+        )
 
 if __name__ == "__main__":
-    Base('run:api', '0.0.0.0', 8080, True).run()
+    Server(app=api, host='0.0.0.0', port=8080).run()
