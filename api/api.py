@@ -1,12 +1,8 @@
 from fastapi import FastAPI
-from starlette.requests import Request
+from fastapi.encoders import jsonable_encoder
 from starlette.responses import JSONResponse
 
 api = FastAPI(title='Template-Api', version='1.0.0')
-
-@api.get('/')
-async def index(request: Request):
-    None
 
 @api.on_event('startup')
 def startup():
@@ -17,17 +13,17 @@ def shutdown():
     None
 
 @api.get('/get')
-async def get() -> JSONResponse:
-    return JSONResponse({'Data': 'Get'})
+async def get():
+    return JSONResponse(content='GET')
 
 @api.post('/post')
-async def post() -> JSONResponse:
-    return JSONResponse({'Data': 'Post'})
+async def post():
+    return JSONResponse(content='POST')
 
 @api.put('/put')
-async def put() -> JSONResponse:
-    return JSONResponse({'Data': 'Put'})
+async def put():
+    return JSONResponse(content='PUT')
 
 @api.delete('/delete/{id}')
-async def delete(id) -> JSONResponse:
-    return JSONResponse({'ID': id})
+async def delete(id: int):
+    return JSONResponse(content=id)
